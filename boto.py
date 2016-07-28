@@ -30,15 +30,17 @@ def handleSimpleAsnwers(msg):
         return {"msg": "dont ne rude....", "animation": "no"}
     return None
 
+def handleWish(msg):
+    if msg.startswith("i wish"):
+        return {"msg":"sorry to disapoint u, i cant make your wish come true","animation":"takeoff"}
+    return None
+
+
 def handleBadWords(msg):
     if msg.startswith("fuck you"):
         return {"msg":"lama cacha? fuck u too","animation":"takeoff"}
     return None
 
-def handleWish(msg):
-    if msg.startswith("i wish"):
-        return {"msg":"sorry to disapoint u, i cant make your wish come true","animation":"takeoff"}
-    return None
 
 
 @route("/chat", method='POST')
