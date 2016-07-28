@@ -35,6 +35,10 @@ def handleBadWords(msg):
         return {"msg":"lama cacha? fuck u too","animation":"takeoff"}
     return None
 
+def handleWish(msg):
+    if msg.startswith("i wish"):
+        return {"msg":"sorry to disapoint u, i cant make your wish come true","animation":"takeoff"}
+    return None
 
 
 @route("/chat", method='POST')
@@ -44,6 +48,9 @@ def chat():
     result = handleBadWords(user_message)
     if not result:
         result = handleSimpleAsnwers(user_message)
+    if not result:
+        result = handleWish(user_message)
+
 
     if not result:
         for word in user_message.split(" "):
