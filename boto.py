@@ -36,8 +36,8 @@ def handleWanted(msg):
     return None
 
 def handleBadWords(msg):
-    if msg.startswith("fuck you", "i dont like u", "shit"):
-        return {"msg":"fuck u","animation":"takeoff"}
+    if msg.startswith("fuck you"):
+        return {"msg":"lama cacha? fuck u too","animation":"takeoff"}
     return None
 
 @route("/chat", method='POST')
