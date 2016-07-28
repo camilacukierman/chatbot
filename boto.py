@@ -8,7 +8,7 @@ import json
 list_boto = {
     "camila":{"msg": "Hello, lest talk..,","animation":"dancing"},
     "felling": {"msg":"I am fine","animation":"excited"},
-    "hobby": {"msg":"i like to do some code....","animation":"heartbroke"},
+    "hobby": {"msg":"i like to do some coding....","animation":"heartbroke"},
     "movie":{"msg":"the beauty and the beast","animation":"inlove"},
     "sport":{"msg":"i dont like sport, i like dancing","animation":"dancing"},
     "music":{"msg":"mizhrari","animation":"ok"},
@@ -25,7 +25,7 @@ def index():
 
 def handleSimpleAsnwers(msg):
     if msg.lower() == "yes":
-        return {"msg":"I love you !thanks for beeing so nice","animation":"inlove"}
+        return {"msg":"I love you !thanks for being so nice","animation":"inlove"}
     if msg.lower() == "no":
         return {"msg": "dont ne rude....", "animation": "no"}
     return None
@@ -40,8 +40,11 @@ def handleBadWords(msg):
 @route("/chat", method='POST')
 def chat():
     user_message = request.POST.get('msg')
-    result = handleSimpleAsnwers(user_message)
+
     result = handleBadWords(user_message)
+    if not result:
+        result = handleSimpleAsnwers(user_message)
+
     if not result:
         for word in user_message.split(" "):
             if word in list_boto:
