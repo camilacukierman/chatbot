@@ -30,21 +30,17 @@ def handleSimpleAsnwers(msg):
         return {"msg": "dont ne rude....", "animation": "no"}
     return None
 
-def handleWanted(msg):
-    if msg.startswith("i wish"):
-        return {"msg":"im sorry, i cant make your wish come true","animation":"afraid"}
-    return None
-
 def handleBadWords(msg):
     if msg.startswith("fuck you"):
         return {"msg":"lama cacha? fuck u too","animation":"takeoff"}
     return None
 
+
+
 @route("/chat", method='POST')
 def chat():
     user_message = request.POST.get('msg')
     result = handleSimpleAsnwers(user_message)
-    result = handleWanted(user_message)
     result = handleBadWords(user_message)
     if not result:
         for word in user_message.split(" "):
